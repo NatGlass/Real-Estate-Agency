@@ -1,21 +1,22 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid"
 
 const SanatiseBlocks = (blocksJSON) => {
     const blocks = JSON.parse(JSON.stringify(blocksJSON));
 
-    const assignIds = (b) => {
-        b.forEach(block => {
+    console.log(blocks)
+
+    const assignId = (b) => {
+        b.forEach((block) => {
             block.id = uuid();
-            // If there are blocks within blocks, assign them unique ids too
             if (block.innerBlocks?.length) {
-                assignIds(block.innerBlocks);
+                assignId(block.innerBlocks);
             }
         });
-    }
+    };
 
-    assignIds(blocks);
+    assignId(blocks);
 
     return blocks;
-}
+};
 
 export default SanatiseBlocks
