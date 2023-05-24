@@ -1,8 +1,16 @@
+import Cover from "./Cover"
+import Heading from "./Heading"
+
 const BlockRenderer = ({ blocks }) => {
     return blocks.map(block => {
         switch (block.name) {
             case 'core/cover': {
-                return <div key={block.id}>core cover</div>
+                return <Cover key={block.id} background={block.attributes.url}>
+                    <BlockRenderer blocks={block.innerBlocks} />
+                </Cover>
+            }
+            case 'core/heading': {
+                return <Heading key={block.id} level={block.attributes.level} content={block.attributes.content} textAlign={block.attributes.textAlign}>core cover</Heading>
             }
             default:
                 return null
