@@ -3,11 +3,15 @@ import client from '@/client'
 import { gql } from '@apollo/client'
 import BlockRenderer from '@/components/BlockRenderer'
 import SanatiseBlocks from '@/utils/SanatiseBlocks'
+import MainMenu from '@/components/MainMenu'
 import MapMainMenuItems from '@/utils/MapMainMenuItems'
 
 const Home = (props) => {
   return (
-    <div><BlockRenderer blocks={props.blocks} /></div>
+    <div>
+      <MainMenu items={props.mainMenuItems} />
+      <BlockRenderer blocks={props.blocks} />
+    </div>
   )
 }
 
