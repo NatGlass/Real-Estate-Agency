@@ -5,7 +5,7 @@
 * Text is aligned to the left by default
 * Default alignment can be changed by modifying the parameter below
 */
-export const getTextAlign = (textAlign = "left") => {
+export const GetTextAlign = (textAlign = "left") => {
     const textAlignMap = {
         "left": "text-left",
         "right": "text-right",
@@ -20,7 +20,7 @@ export const getTextAlign = (textAlign = "left") => {
 * Set the level type of the heading, from h1 to h6
 *
 */
-export const getFontSizeForHeading = (level) => {
+export const GetFontSizeForHeading = (level) => {
     const fontSizeMap = {
         1: "text-6xl",
         2: "text-5xl",

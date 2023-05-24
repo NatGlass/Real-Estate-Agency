@@ -15,7 +15,7 @@ const BlockRenderer = ({ blocks }) => {
                 return <Heading key={block.id} level={block.attributes.level} content={block.attributes.content} textAlign={block.attributes.textAlign}>core cover</Heading>
             }
             case 'core/paragraph': {
-                return <Paragraph key={block.id} content={block.attributes.content} textAlign={block.attributes.align} textColor={theme[block.attributes.textColor] || block.attributes.style.text.color}>core cover</Paragraph>
+                return <Paragraph key={block.id} content={block.attributes.content} textAlign={block.attributes.align} textColor={theme[block.attributes.textColor] || block.attributes.style?.color?.text}>core cover</Paragraph>
             }
             default:
                 return null
