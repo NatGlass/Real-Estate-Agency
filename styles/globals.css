@@ -7,3 +7,11 @@
 body {
     @apply font-body;
 }
+
+.btn {
+    @apply bg-blue-700 inline-block my-2 px-4 py-2 rounded-md cursor-pointer text-white;
+}
+
+.btn:hover {
+    @apply bg-blue-600;
+}
