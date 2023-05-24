@@ -9,7 +9,7 @@ import MapMainMenuItems from '@/utils/MapMainMenuItems'
 const Home = (props) => {
   return (
     <div>
-      <MainMenu items={props.mainMenuItems} />
+      <MainMenu items={props.mainMenuItems} callToActionLabel={props.callToActionLabel} callToActionDestination={props.callToActionDestination} />
       <BlockRenderer blocks={props.blocks} />
     </div>
   )
@@ -29,6 +29,14 @@ export const getStaticProps = async () => {
         }
         acfOptionsMainMenu {
     mainMenu {
+      callToActionButton {
+        label
+        destination {
+          ... on Page {
+            uri
+          }
+        }
+      }
       menuItems {
         menuItem {
           destination {
@@ -56,6 +64,8 @@ export const getStaticProps = async () => {
   return {
     props: {
       mainMenuItems: MapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menuItems),
+      callToActionLabel: data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
+      callToActionDestination: data.acfOptionsMainMenu.mainMenu.callToActionButton.destination.uri,
       blocks: SanatiseBlocks(data.nodeByUri.blocks)
     }
   }

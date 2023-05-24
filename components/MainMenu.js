@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+import ButtonLink from './ButtonLink'
 
-const MainMenu = ({ items }) => {
+const MainMenu = ({ items, callToActionLabel, callToActionDestination }) => {
     console.log('Main Menu', items)
     return (
         <div className="flex h-16 sticky top-0 z-50 bg-slate-700 text-white px-5">
@@ -27,6 +28,9 @@ const MainMenu = ({ items }) => {
                         )}
                     </div>
                 ))}
+                <div className="ml-5 my-auto">
+                    <ButtonLink destination={callToActionDestination} label={callToActionLabel} />
+                </div>
             </div>
         </div>
     )
