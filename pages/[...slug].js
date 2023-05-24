@@ -1,45 +1,12 @@
 import React from 'react'
 import client from '@/client'
 import { gql } from '@apollo/client'
-import SanatiseBlocks from '@/utils/SanatiseBlocks'
-import BlockRenderer from '@/components/BlockRenderer'
+import GetPageStaticProps from '@/utils/GetPageStaticProps'
+import Page from '@/components/Page'
 
-const Page = (props) => {
-    return (
-        <div>
-            <BlockRenderer blocks={props.blocks} />
-        </div>
-    )
-}
+export default Page;
 
-export default Page
-
-export const getStaticProps = async (context) => {
-    const uri = `/${context.params.slug.join('/')}/`
-    const { data } = await client.query({
-        query: gql`
-        query PageQuery($uri: String!) {
-          nodeByUri(uri: $uri) {
-            ... on Page {
-              id
-              title
-              blocks
-            }
-          }
-        }
-      `,
-        variables: {
-            uri,
-        }
-    })
-
-    return {
-        props: {
-            title: data.nodeByUri.title,
-            blocks: SanatiseBlocks(data.nodeByUri.blocks)
-        }
-    }
-}
+export const getStaticProps = GetPageStaticProps;
 
 export const getStaticPaths = async () => {
     const { data } = await client.query({
